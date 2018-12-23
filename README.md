@@ -1,0 +1,1 @@
+This describes a reasonable API specification for an ML model service.  It is agnostic to how the model is actually implemented, but it assumes that the model takes some sort of input and produces a prediction.  The goals are for the API to completely specify input and output in a way that makes it reasonably easy to build out general services
