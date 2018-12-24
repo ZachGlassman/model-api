@@ -6,6 +6,7 @@ from contextlib import contextmanager
 import requests
 import yaml
 import docker
+
 def yaml_to_json(filename):
     with open(filename) as fp:
         data = yaml.load(fp)
@@ -37,11 +38,9 @@ def container(*args, **kwargs):
         container.remove()
 
 def generate_api(json_spec, languages):
-    with container(
-        'swaggerapi/swagger-generator',
-        ports={8080:8080},
-        detach=True
-    ):
+    with container('swaggerapi/swagger-generator',
+                   ports={8080:8080},
+                   detach=True):
         print('container created')
         for lang in languages:
             url = _request_build(json_spec, lang)
